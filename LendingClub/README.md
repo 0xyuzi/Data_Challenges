@@ -10,8 +10,20 @@ There three main steps in the analysis:
 2. Feature Engineering 
 3. Prediction models including Logistic Regression, Random Forest, and LightGBM
 
-Notebooks for prediction model section:
-[LR_predict_model for logistic regression](LR_predict_model.ipynb).
+
+Jupyter notebooks for prediction model section:
+- [LR_predict_model for Logistic Regression Classifier](LR_predict_model.ipynb)
+- [RF_predict_model for Ramom Forest Classifier](RF_predict_model.ipynb)
+- [predict_model-LightGBM for LightGBM Classifier](predict_model-LightGBM.ipynb)
+
+Jupyter notebooks for feature engineering
+- [feature_selection_eng_LR for Logistic Regression features](feature_selection_eng_LR.ipynb)
+- [feature_selection_eng_RF_GBM_model for Random Forest and LightGBM features](feature_selection_eng_RF_GBM_model.ipynb)
+
+Jupyter notebooks for data exploration and visulization
+- [data_exploration_1](data_exploration_1.ipynb)
+- [data_exploration_2](data_exploration_2.ipynb)
+- [data_exploration_3](data_exploration_3.ipynb)
 
 
 ## Five Questions to be Answered:
@@ -35,7 +47,6 @@ Popluar in production enviroments as:
 The main differences between lightGBM and XGBOOST are:
 - LightGBM uses level-wise tree grwoth, while XGBOOST uses leaf-wise growth
 - LightGBM applies histogram approximation method to run faster than histogram exact value method in XGBOOST
-
 
 
 To compare those model's performance, the ROC-AUC score is applied. Another two scores: Gini coefficient, and max diff of Kolmogorov-Smirnov (K-S) curve are selected. THey are commonly used in credit risk industry to evaluate the model’s discriminatory power. The larger the Gini coefficient and max Kolmogorov-Smirnove, the better the models are.
@@ -100,7 +111,6 @@ The features have missing values are dropped when in conditions below,
 - When more than 50% of missing in the feature of whole data sets
 
 
-
 For the RF model and LightGBM, missing data was handled by imputation with certain constants. For example, for the numerical data, -999.9 was used for imputation and "Missing" was applied for string type before label encoding to numerical. Because of the function of decision tree, these constants will be assigned to the same node of trees. The benifits includes: convinience and simple, and surpuringly effective for tree-like model. And probally those data missed indicates those events did not occur yet.
 
 
@@ -116,13 +126,16 @@ Lack of time series data to monitor the change of features including FICO score,
 Economic indicators: such as GDP growth, empolyement data and other major ecnomical indicators. Those factors could impact on borrowers' ability to pay back the money as they has higher risk being income loss, not to say even being laid off when the economy worsen.  
 
 ### 4. Discuss additional variables that weren’t present in the data but could have greatly improved your model.
-- Timestemp of features: FICO score, Grade, Subgrade, Interest Rate, Loan Payment.
-- Economic indicators: such as GDP growth, empolyement data and other major economical indicators.
+Economic indicators: such as GDP growth, empolyement data and other major economical indicators. Those data and indicators would largely impact on borrowers's ability to pay back loan as they are not controllable by individuals.
 
 ### 5. What are the best opportunities to limit Lending Club charge-offs
-
+(To be continue)
 
 ### 6. How would you mesure the stability of your insights over time, if you were in charge of implementing the identified opportunities?
+The model prediction over time will be challenged by the change of underline distribution of the data samples. For example, a series of new type of employement emerges as Youtubers, Instgrammers. They are seldom exist in the traning data at earlier time when the working prediction model was built. Another example is more and more young people apply for loan so the age distribution will be different than before. The model performance may reduce as the distribution of population changes.
+
+The "population Stability Index (PSI)", which is a score to evaluate the how difference between two data population, could be implemented for stability test. In a short term, if index is <0.1, the two populations are not much change and it's relative safe to use the working model; if index is in the range of 0.1 and 0.25, it is better to be caution and to monitor the model's performance carefullly, even be prepared to train a new model if working model performance get worse; if index >0.25, the working model should be immedietly be discarded and new model has to be trained as quick as possible.
 
 
 ### 7, Which account does your model predict as most likely to charge off that did not? Why do you think this false positive occurred?
+(To be continue)
