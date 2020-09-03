@@ -11,7 +11,7 @@ There three main steps in the analysis:
 3. Prediction models including Logistic Regression, Random Forest, and LightGBM
 
 Notebooks for prediction model section:
-[LR_predict_model for logistic regression](https://duckduckgo.com).
+[LR_predict_model for logistic regression](LR_predict_model.ipynb).
 
 
 ## Five Questions to be Answered:

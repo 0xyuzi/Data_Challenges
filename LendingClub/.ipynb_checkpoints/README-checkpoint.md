@@ -3,6 +3,17 @@ update: 09/02/2020
 # LendingClub Data Challenge
 Name: Tao He
 
+This challenge is to predict Lending Club's "charge-off" label by using this company's data in 2011 and 2013. To limit the "charge-off" cases, as equivalent of "default", is to reduce the risk of losing money in this bussines. 
+
+There three main steps in the analysis:
+1. Data exploration and visulization
+2. Feature Engineering 
+3. Prediction models including Logistic Regression, Random Forest, and LightGBM
+
+Notebooks for prediction model section:
+[LR_predict_model for logistic regression](LR_predict_model.ipynb).
+
+
 ## Five Questions to be Answered:
 ### 1. Why did you choose the specific modeling algorithm you did
 Three types of models were applied to compare their performance. They are logistic regression model, random forest model, and LightGBM model.
