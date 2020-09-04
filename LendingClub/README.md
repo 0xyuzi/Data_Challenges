@@ -26,7 +26,7 @@ Jupyter notebooks for data exploration and visulization
 - [data_exploration_3](data_exploration_3.ipynb)
 
 
-## Five Questions to be Answered:
+## Five of Seven Questions to be Answered:
 ### 1. Why did you choose the specific modeling algorithm you did
 Three types of models were applied to compare their performance. They are logistic regression model, random forest model, and LightGBM model. The deep neural network model is not chosen because this data is small that this model could be easily overfitted.  
 
