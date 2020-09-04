@@ -1,4 +1,4 @@
-update: 09/02/2020
+update: 09/03/2020
 
 # LendingClub Data Challenge
 Name: Tao He
@@ -28,30 +28,20 @@ Jupyter notebooks for data exploration and visulization
 
 ## Five Questions to be Answered:
 ### 1. Why did you choose the specific modeling algorithm you did
-Three types of models were applied to compare their performance. They are logistic regression model, random forest model, and LightGBM model.
+Three types of models were applied to compare their performance. They are logistic regression model, random forest model, and LightGBM model. The deep neural network model is not chosen because this data is small that this model could be easily overfitted.  
 
-Logistic regression (LR) model, which uses sigmoid function to transform the linear regression into the probablity, uses the features' linear relation with target to fit. The benifits of LR model includes its diretcly indicate the feature's weights, thus the impact of the features on the prediction.To reduce the overfitting, the L1 and L2 regularization were used. 
+Logistic regression (LR) model is selected because it could geneate predicition probability, but not just "1" or "0".  The probability of "charge-off" could represented the rate of default. This rate is essential for loan bussiness's risk management.  If the default rate is so high, the company may has higher chance to lose money because more percentage of borrowers will not payback the loan. On the other hand, if the company is very consertive to set a very low default rate. Less borrowers will be approve and less potential income will be generated for the company. In addition, LR model provides each feature's coefficient which could indicates one feature's importance compared with other features. This capabibility could be used to explain whey some borrowers being declined and others being approved without discrimination based on sex and race. Moreoever, this model also could test each feature's statsitic significant to filter out some features which have false high level of coefficient. The issue of LR model is that feature engineering takes much more effort as the features should be scaled and normalized, or one-hot-encoded.  
 
-Random forest(RF) model, as the ensemble method of decision trees, combines the latter's advantage of less bias with its own improvement on the reduction of variance, which is the key issue of decision tree. Compared with LR model, the RF model could capture the interaction relationship between features and can skip the scaling and normalization process, which is the eseential step for LR. 
+Random forest (RF) model as the ensemble deicision tree model to reduce the model bias. Compared with LR model, the RF model could capture the interaction relationship between features and can skip the scaling and normalization process. It also produces the prediction probability.   
 
-LightGBM model, as one type of  gradient boosting tree model, is currently one of the most popular models. As the counterpart of XGBOOST model, it has similar performance as
-- Faster execution speed than other gradient boosting tree models
-- Performs so well that many Kaggle players won the competitions with XGBOOST
+LightGBM model, as one type of  gradient boosting tree model, is currently one of the most popular models. As the counterpart of XGBOOST model, it has similar power performance. LightGBM, however, applies histogram approximation method to run faster than histogram exact value method in XGBOOST. This model also generate prediction probablity.
 
-Popluar in production enviroments as: 
-- Parallelization of tree construction using all of your CPU cores during training.
-- Distributed Computing for training very large models using a cluster of machines.
-- Out-of-Core Computing for very large datasets that don’t fit into memory.
-- Cache Optimization of data structures and algorithm to make best use of hardware.
-
-The main differences between lightGBM and XGBOOST are:
-- LightGBM uses level-wise tree grwoth, while XGBOOST uses leaf-wise growth
-- LightGBM applies histogram approximation method to run faster than histogram exact value method in XGBOOST
+As the result, the LightGBM model has the highest score among the three models. The LR model gets the 2nd highest score, and the RF model ranks the last. 
 
 
 To compare those model's performance, the ROC-AUC score is applied. Another two scores: Gini coefficient, and max diff of Kolmogorov-Smirnov (K-S) curve are selected. THey are commonly used in credit risk industry to evaluate the model’s discriminatory power. The larger the Gini coefficient and max Kolmogorov-Smirnove, the better the models are.
 
-The resuls of different models as shown below:
+The details of resuls of different models as shown below:
 
 
 | Model         |    Roc_auc  | Gini Coef     | K-S max |
