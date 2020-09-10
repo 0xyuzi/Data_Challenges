@@ -128,19 +128,21 @@ The "population Stability Index (PSI)", which is a score to evaluate the differe
 
 
 ### 7, Which account does your model predict as most likely to charge off that did not? Why do you think this false positive occurred?
-(To be continue)
-Tentative answers:
-- Order predicted results from the highest default probablity to lowest default prebablity. 
-- Check the false positive results, select top 10% - 20% of them. 
-- What factors lead to those false positive results? Are they on near the predicton threashold?
-- Explored those samples with grouping method? KNN, Kmeans?
+AAfter selected the 50 false positive (fp50) accounts with the highest predicted probability in the test dataset, it was found:
 
-After selected the 50 false positive accounts with the highest predicted probility, it was found:
-- Those accounts has higer average loan amount distribution compared with overall non-default accounts
-- The fico scores distribution of those accounts are lower
-- They has less income than the overall-defult accounts 
-- They has higher loan-income ratio, which is the loan amount divided by income.
+- The fico_scores_high distribution of those accounts are lower (679.7 for fp50 accounts, 697.9 for all accounts in test data)
+- They have less income than the overall-default accounts (\$49,270.4 for fp50 accounts, \$70,321.2 for all accounts in the test data)
+- They have a higher loan-income ratio, which is the loan amount divided by income. (0.37 for fp50 accounts, 0.22 for all accounts in the test data)
+-  Only the "60-month" term in the fp50 but no "36-month" term.
+Those false positive occurs because those features above have high weights in the prediction model. Their coefficients are shown in the table below using the logistic regression model.
 
-From factors resulted from logistic regression model
+
+| Feature Name   | Coefficient   | 
+| :---           |     ----:     |   
+| Fico_score_low |     0.79      |    
+| Annual income  |     0.41      | 
+| Loan-income ratio  |  - 0.46   |
+| Term           |  - 1.09       |
+
 
 
